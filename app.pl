@@ -12,7 +12,7 @@ get '/' => sub {
     redirect_uri => $ENV{CREATESEND_REDIRECT_URI},
     scope => 'ViewReports,CreateCampaigns,SendCampaigns'
   );
-  return $self->redirect_to();
+  return $self->redirect_to($url);
 };
 
 get '/exchange_token' => sub {
