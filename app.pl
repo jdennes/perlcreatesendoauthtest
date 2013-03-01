@@ -7,7 +7,7 @@ plugin 'PODRenderer';
 
 get '/' => sub {
   my $self = shift;
-  my $url = Net::CampaignMonito->authorize_url(
+  my $url = Net::CampaignMonitor->authorize_url(
     client_id => $ENV{CREATESEND_CLIENT_ID},
     redirect_uri => $ENV{CREATESEND_REDIRECT_URI},
     scope => 'ViewReports,CreateCampaigns,SendCampaigns'
