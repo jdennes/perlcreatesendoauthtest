@@ -27,7 +27,8 @@ get '/exchange_token' => sub {
     code => $code
   );
 
-  my $response = "Your user is successfully authenticated. Here are the details you need:<br/><br/>";
+  my $response = "<pre>";
+  $response .= "Your user is successfully authenticated. Here are the details you need:<br/><br/>";
   $response .= "access token: ".$token_details->{access_token}."<br/>";
   $response .= "refresh token: ".$token_details->{refresh_token}."<br/>";
   $response .= "expires in: ".$token_details->{expires_in}."<br/>";
@@ -40,7 +41,9 @@ get '/exchange_token' => sub {
   my $clients = $cm->account_clients();
 
   $response .= "We've made an API call too. Here are your clients:<br/><br/>";
-  $response .= Dumper($clients);
+  $response .= Dumper($clients->{response});
+  $response .="</pre>";
+  
   $self->render(text => $response);
 };
 
